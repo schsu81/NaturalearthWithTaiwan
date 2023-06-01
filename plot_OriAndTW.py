@@ -26,4 +26,5 @@ axr.add_geometries(land,axr.projection,facecolor='gold',edgecolor='none')
 coastlines = crt.io.shapereader.Reader('ne_10m_coastline.shp').geometries()
 axr.add_geometries(coastlines,axr.projection,facecolor='none',edgecolor='black')
 
-plt.savefig('OriAndTW_new.png')
+plt.show()
+#plt.savefig('OriAndTW_new.png')

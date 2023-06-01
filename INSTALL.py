@@ -12,7 +12,7 @@ import shutil
 from glob import glob
 from cartopy import config
 dir_NE10wTW = os.path.dirname(__file__)
-dir_backup = f'ne_10m_ori'
+dir_backup = f'ne_ori'
 names = ['coastline','ocean','land']
 #%%============================================================================
 def _printhelp():
@@ -38,8 +38,9 @@ def _install(dir_data):
         os.makedirs(dir_backup)
       for fn in fns:
         if os.path.isfile(os.path.join(dir_backup,fn)):
-          os.remove(os.path.join(dir_backup,fn))
-        shutil.move(fn,dir_backup)
+          os.remove(fn)
+        else:
+          shutil.move(fn,dir_backup)
   fns = glob(os.path.join(dir_NE10wTW,'ne_10m_*'))
   for fn in fns:
     shutil.copy2(fn,'.')
