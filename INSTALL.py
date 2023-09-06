@@ -68,6 +68,8 @@ if __name__ == '__main__':
   isInstall = True
   isPrefix  = False
   countArg  = 0
+  if len(sys.argv)<=1:
+    _printhelp()
   for arg in sys.argv[1:]:
     if arg[:2]=='--':
       varn,value = arg.split('=',1)
@@ -77,7 +79,7 @@ if __name__ == '__main__':
           prefix = value 
         case _:
           _printhelp()
-    elif arg[0]=='-':
+    elif arg[1]=='-':
       _printhelp()
     else:
       countArg += 1
@@ -94,10 +96,10 @@ if __name__ == '__main__':
   if isPrefix:
     dir_data = prefix
   else:
-    if config['pre_existing_data_dir'] is not None and os.path.isdir(config['pre_existing_data_dir']):
-      dir_data = config['pre_existing_data_dir']
-    else:
-      dir_data = config['data_dir']
+    #if config['pre_existing_data_dir'] is not None and os.path.isdir(config['pre_existing_data_dir']):
+    #  dir_data = config['pre_existing_data_dir']
+    #else:
+    dir_data = config['data_dir']
     dir_data = os.path.join(dir_data,'shapefiles','natural_earth','physical')
   
   print()
